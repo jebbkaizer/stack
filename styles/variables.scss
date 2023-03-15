@@ -1,0 +1,96 @@
+// variables
+$border-radius: (
+    "sm": 4px,
+    "md": 8px,
+    "full": 100%
+);
+
+$heights: (
+    "full": 100%
+);
+
+$widths: (
+    "full": 100%
+);
+
+$colors: (
+    "gray-100": #F3F4F7,
+    "gray-200": #EAECF0,
+    "gray-1": #FEFEFE,
+    "gray-50": #F9FAFB,
+    "gray-75": #888,
+    "gray-80": #667085,
+    "black": #111111,
+);
+
+$paddings: (
+    "xs": 4px,
+    "sm": 6px,
+    "md": 8px,
+    "lg": 12px,
+    "xl": 16px,
+    "2xl": 20px,
+    "3xl": 36px
+);
+
+$font-weights: (
+    "light": 400,
+    "medium": 500,
+    "heavy": 700
+);
+
+$font-size: (
+    "xs": 11px,
+    "sm": 13px,
+    "md": 16px
+);
+
+$gaps: (
+    "sm": 4px,
+    "md": 8px,
+    "lg": 12px,
+    "xl": 24px
+);
+
+@mixin generate-classes($property, $values) {
+
+    @each $name,
+    $value in $values {
+        .#{$property}-#{$name} {
+            #{$property}: $value;
+        }
+    }
+}
+
+@include generate-classes('font-size', $font-size);
+@include generate-classes('border-radius', $border-radius);
+@include generate-classes('height', $heights);
+@include generate-classes('width', $widths);
+@include generate-classes('color', $colors);
+@include generate-classes('color', $colors);
+@include generate-classes('padding', $paddings);
+@include generate-classes('font-weight', $font-weights);
+@include generate-classes('font-size', $font-size);
+@include generate-classes('gap', $gaps);
+
+@mixin generate-variables($property, $values) {
+
+    @each $name,
+    $value in $values {
+        --#{$property}-#{$name}: #{$value};
+    }
+}
+
+// css variables
+:root {
+    @include generate-variables('font-size', $font-size);
+    @include generate-variables('border-radius', $border-radius);
+    @include generate-variables('height', $heights);
+    @include generate-variables('width', $widths);
+    @include generate-variables('color', $colors);
+    @include generate-variables('color', $colors);
+    @include generate-variables('padding', $paddings);
+    @include generate-variables('font-weight', $font-weights);
+    @include generate-variables('font-size', $font-size);
+    @include generate-variables('gap', $gaps);
+}
